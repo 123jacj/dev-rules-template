@@ -12,3 +12,6 @@ Thumbs.db
 
 # 系统文件
 desktop.ini
+
+# 运行日志
+*.log
