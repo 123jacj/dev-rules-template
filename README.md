@@ -77,7 +77,9 @@
 
 ### 其余约定
 
-- 模板后缀统一 `.template.md`（或 `.md.template`），复制时去掉 `.template`
+- 模板文件名统一带 `.template` 标记，按文件类型分两种写法，复制时去掉 `.template` 即得目标文件名：
+  - 规则类（需保持原名）：`CLAUDE.md.template` → `CLAUDE.md`
+  - 记录类（按编号命名）：`01-进度追踪.template.md` → `01-进度追踪.md`
 - 变量用双花括号：`{{PROJECT_NAME}}`、`{{TECH_STACK}}`
 - 可选章节用 `<!-- OPTIONAL:START/END -->` 包裹，不需要时整段删除
 - 所有模板正文使用**简体中文**；代码标识符、命令、路径保持原文
