@@ -54,7 +54,8 @@ MAPPING = [
 A_VARS = [
     ("PROJECT_NAME", "name", "项目名", "My Project"),
     ("PROJECT_POSITIONING", "positioning", "一句话定位", "面向团队内部的工具"),
-    ("PROJECT_GOAL", "goal", "项目目标", "把重复流程自动化，降低出错率"),
+    ("PROJECT_GOAL", "goal", "主线目标（要做什么）", "把重复流程自动化，降低出错率"),
+    ("MAIN_LINE_TYPE", "main_line_type", "主线类型（从零新建 / 优化改造）", "优化/改造"),
     ("PROJECT_BOUNDARY", "boundary", "项目边界 / 不做的事", "只支持本地运行；不处理敏感数据"),
     ("TECH_STACK", "stack", "技术栈", "Python >=3.10 + pytest"),
     ("BUILD_TOOL", "build", "包管理 / 构建工具", "uv"),

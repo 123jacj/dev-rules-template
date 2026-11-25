@@ -3,11 +3,19 @@
 > Claude Code 每次会话加载本文件。对话、文档、注释与提交信息使用简体中文。
 > 通用行为准则继承自全局 `~/.claude/rules/common/agents.md`；本文件只补充项目特有约束。
 
-## 一、项目定位
+## 一、主线说明（这个项目要做什么）
 
-- **{{PROJECT_NAME}}**：{{PROJECT_POSITIONING}}
-- **目标**：{{PROJECT_GOAL}}
-- **边界**：{{PROJECT_BOUNDARY}}
+> AI 每次进来先读这里，一句话抓住主线；细节再按 §三 索引去读对应文档。
+
+- **项目**：{{PROJECT_NAME}} —— {{PROJECT_POSITIONING}}
+- **主线目标**：{{PROJECT_GOAL}}
+- **当前在做什么**：{{CURRENT_PHASE}}
+- **技术栈**：{{TECH_STACK}}（构建：{{BUILD_TOOL}}；存储：{{STORAGE}}）
+- **边界（不做的事）**：{{PROJECT_BOUNDARY}}
+
+> 主线类型：{{MAIN_LINE_TYPE}}（二选一填写并删掉另一种——
+> 「从零新建」：项目刚开始，主线是把需求逐步实现出来；
+> 「优化 / 改造」：项目已有基础，主线是在现有代码上做增强、重构或修复。）
 
 <!-- OPTIONAL:START
 ## 已封存内容（Legacy）
@@ -23,7 +31,6 @@ OPTIONAL:END -->
 - 存储：{{STORAGE}}
 - 运行时依赖策略：{{DEPENDENCY_POLICY}}
 - 不变量：{{INVARIANTS}}
-- 当前阶段：{{CURRENT_PHASE}}
 
 ## 三、权威文档与入口
 

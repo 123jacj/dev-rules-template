@@ -87,7 +87,7 @@ python 04-bootstrap/init_project.py --target D:/my-project --yes
 python 04-bootstrap/init_project.py --target D:/my-project
 ```
 
-脚本会完成：复制 18 个模板 + `AI_README.md` 到目标目录 → 去掉 `.template` → 替换 15 个 A 类项目配置变量 → 保留 B/C 类占位作为填写提示 → 输出清单并校验 A 类无残留。
+脚本会完成：复制 18 个模板 + `AI_README.md` 到目标目录 → 去掉 `.template` → 替换 16 个 A 类项目配置变量 → 保留 B/C 类占位作为填写提示 → 输出清单并校验 A 类无残留。
 
 > 全局层不自动安装，脚本不触碰用户主目录，需手工并入 `~/.claude`。
 

@@ -13,21 +13,22 @@
 
 ---
 
-## A · 项目配置（15 个）
+## A · 项目配置（16 个）
 
 | 变量 | 含义 | 示例 |
 |---|---|---|
 | `{{COMPACT_CRON_ID}}` | 上下文压缩提醒的定时任务 ID；无则不启用 | `<your-cron-id>` |
 | `{{PROJECT_NAME}}` | 项目名，用于文档标题 | `My Project` |
 | `{{PROJECT_POSITIONING}}` | 一句话定位 | `面向团队内部的命令行工具` |
-| `{{PROJECT_GOAL}}` | 项目目标 | `把重复的手工流程自动化，降低出错率` |
+| `{{PROJECT_GOAL}}` | 主线目标（要做什么） | `把重复的手工流程自动化，降低出错率` |
+| `{{MAIN_LINE_TYPE}}` | 主线类型：`从零新建` 或 `优化/改造` | `优化/改造` |
 | `{{PROJECT_BOUNDARY}}` | 明确边界 / 不做的事 | `只支持本地运行；不处理敏感数据` |
 | `{{TECH_STACK}}` | 技术栈 | `Python ≥3.10 + pytest + ruff` |
 | `{{BUILD_TOOL}}` | 包管理 / 构建工具 | `uv` / `npm` / `gradle` |
 | `{{STORAGE}}` | 存储方案 | `SQLite + JSON` |
 | `{{DEPENDENCY_POLICY}}` | 依赖策略 | `零运行时依赖` |
 | `{{INVARIANTS}}` | 架构不变量 | `所有请求经统一入口；不自动重放外部副作用` |
-| `{{CURRENT_PHASE}}` | 当前阶段 | `P2 进行中` |
+| `{{CURRENT_PHASE}}` | 当前阶段（正在做什么） | `P2 进行中：重构订单模块` |
 | `{{PRD_FILE}}` | 优先级队列 / 产品文档文件名 | `product-requirements.md` |
 | `{{MODULE_RULE}}` | 模块推进规则 | `每次只推进 1 个主模块` |
 | `{{PHASE_MODEL}}` | 推进模型描述 | `P0 → P1 → P2 优先级队列` |
