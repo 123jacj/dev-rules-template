@@ -39,6 +39,7 @@
 
 | 模板 | 落地路径 |
 |---|---|
+| `AI_README.md` | `<PROJECT>/AI_README.md` |
 | `02-project/CLAUDE.md.template` | `<PROJECT>/CLAUDE.md` |
 | `02-project/agents.md.template` | `<PROJECT>/agents.md` |
 | `02-project/development.md.template` | `<PROJECT>/docs/active/development.md` |
@@ -76,7 +77,7 @@ python 04-bootstrap/init_project.py --target D:/my-project \
 
 脚本行为：
 
-- 复制上表 **18 个**文件，自动去掉 `.template`
+- 复制上表 **19 个**文件（18 个模板 + `AI_README.md`），自动去掉 `.template`
 - 替换 **A 类 15 个**变量
 - **保留 B/C 类 68 个**占位符作为填写提示
 - 已存在文件默认跳过，加 `--force` 覆盖

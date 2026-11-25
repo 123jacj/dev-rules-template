@@ -30,6 +30,7 @@ if hasattr(sys.stdout, "reconfigure"):
 RULES_ROOT = Path(__file__).resolve().parent.parent
 
 MAPPING = [
+    ("AI_README.md", "AI_README.md"),
     ("02-project/CLAUDE.md.template", "CLAUDE.md"),
     ("02-project/agents.md.template", "agents.md"),
     ("02-project/development.md.template", "docs/active/development.md"),
