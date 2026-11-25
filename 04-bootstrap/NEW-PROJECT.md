@@ -43,6 +43,12 @@
 | `02-project/agents.md.template` | `<PROJECT>/agents.md` |
 | `02-project/development.md.template` | `<PROJECT>/docs/active/development.md` |
 | `02-project/项目概览.template.md` | `<PROJECT>/docs/00-项目概览.md` |
+| `02-project/docs/01-需求分析.template.md` | `<PROJECT>/docs/01-需求分析.md` |
+| `02-project/docs/02-范围与边界.template.md` | `<PROJECT>/docs/02-范围与边界.md` |
+| `02-project/docs/03-业务规则与状态机.template.md` | `<PROJECT>/docs/03-业务规则与状态机.md` |
+| `02-project/docs/04-工程结构与规范.template.md` | `<PROJECT>/docs/04-工程结构与规范.md` |
+| `02-project/docs/05-技术验证清单.template.md` | `<PROJECT>/docs/05-技术验证清单.md` |
+| `02-project/docs/06-阶段评审记录.template.md` | `<PROJECT>/docs/06-阶段评审记录.md` |
 | `02-project/任务池.template.md` | `<PROJECT>/docs/09-任务池.md` |
 | `03-records/00-编号规范.md` | `<PROJECT>/docs/编号规范.md` |
 | `03-records/01-进度追踪.template.md` | `<PROJECT>/docs/90-进度追踪.md` |
@@ -70,7 +76,7 @@ python 04-bootstrap/init_project.py --target D:/my-project \
 
 脚本行为：
 
-- 复制上表 **12 个**文件，自动去掉 `.template`
+- 复制上表 **18 个**文件，自动去掉 `.template`
 - 替换 **A 类 15 个**变量
 - **保留 B/C 类 68 个**占位符作为填写提示
 - 已存在文件默认跳过，加 `--force` 覆盖
