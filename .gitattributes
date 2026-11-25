@@ -1,0 +1,12 @@
+# 统一换行符：仓库内文本文件一律以 LF 存储与检出
+# 避免 Windows 下 core.autocrlf=true 导致每次都提示 "LF will be replaced by CRLF"
+* text=auto
+
+*.md        text eol=lf
+*.py        text eol=lf
+*.json      text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.sh        text eol=lf
+.gitignore  text eol=lf
+.gitattributes text eol=lf
