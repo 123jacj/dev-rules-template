@@ -42,6 +42,9 @@
 | `02-project/CLAUDE.md.template` | `<PROJECT>/CLAUDE.md` |
 | `02-project/agents.md.template` | `<PROJECT>/agents.md` |
 | `02-project/development.md.template` | `<PROJECT>/docs/active/development.md` |
+| `02-project/项目概览.template.md` | `<PROJECT>/docs/00-项目概览.md` |
+| `02-project/任务池.template.md` | `<PROJECT>/docs/09-任务池.md` |
+| `03-records/00-编号规范.md` | `<PROJECT>/docs/编号规范.md` |
 | `03-records/01-进度追踪.template.md` | `<PROJECT>/docs/90-进度追踪.md` |
 | `03-records/02-开发日志.template.md` | `<PROJECT>/docs/93-开发日志.md` |
 | `03-records/03-变更记录.template.md` | `<PROJECT>/docs/92-变更记录.md` |
@@ -49,17 +52,55 @@
 | `03-records/05-防复发规则.template.md` | `<PROJECT>/tasks/lessons.md` |
 | `03-records/06-上下文声明.template.md` | `<PROJECT>/docs/active/context-declarations.md` |
 
+## 步骤 3-4 自动化（可选）
+
+以上「复制 + 去后缀 + 替换 A 类变量」可用脚本一次完成：
+
+```bash
+# 交互式逐项填写
+python 04-bootstrap/init_project.py --target D:/my-project
+
+# 非交互，缺失项用示例默认值
+python 04-bootstrap/init_project.py --target D:/my-project --yes
+
+# 关键项直接指定
+python 04-bootstrap/init_project.py --target D:/my-project \
+  --name "My Project" --stack "Python >=3.10" --build uv --yes
+```
+
+脚本行为：
+
+- 复制上表 **12 个**文件，自动去掉 `.template`
+- 替换 **A 类 15 个**变量
+- **保留 B/C 类 68 个**占位符作为填写提示
+- 已存在文件默认跳过，加 `--force` 覆盖
+- 结束时校验 A 类无残留，有残留则返回非零退出码
+- 不触碰 `~/.claude`，全局层仍需手工安装
+
 ## 步骤 4 · 填充变量
 
-打开 `VARIABLES.md`，按三类分别处理：
+按三类分别处理（详见 `VARIABLES.md`）：
 
-1. **A 类 · 项目配置**（15 个）：初始化时一次填完，项目内恒定
-2. **B 类 · 记录字段**（29 个）：每次写记录时按事实替换
-3. **C 类 · 语义占位**（39 个）：写到哪里填到哪里，填写后**删除占位符本身**
+1. **A 类 · 项目配置**（15 个）：**复制后立即全部替换**，项目内恒定
+2. **B 类 · 记录字段**（29 个）：写记录时按事实替换
+3. **C 类 · 语义占位**（39 个）：**保留作为填写提示**，写到哪里填到哪里，填完删除占位符本身
 
-**验收**：`<PROJECT>` 下不应残留任何 `{{`（含 C 类语义占位）：
+> 可用脚本一键完成复制与 A 类替换，见「步骤 3-4 自动化」。
+
+### 验收（分两阶段）
+
+**初始化完成时** —— 只要求 A 类无残留，B/C 类占位**应保留**：
+
 ```bash
-grep -R "{{" <PROJECT> --include="*.md" || echo "OK: 无残留变量"
+grep -RhoE "\{\{[A-Z0-9_]+\}\}" <PROJECT> --include="*.md" | sort -u \
+  | grep -E "PROJECT_(NAME|POSITIONING|GOAL|BOUNDARY)|TECH_STACK|BUILD_TOOL|STORAGE|DEPENDENCY_POLICY|INVARIANTS|CURRENT_PHASE|PRD_FILE|MODULE_RULE|PHASE_MODEL|ARCHIVE_DIR|COMPACT_CRON_ID" \
+  && echo "⚠️ 仍有 A 类变量未替换" || echo "✅ A 类已全部替换"
+```
+
+**项目推进过程中** —— 每写完一条记录，清空该条目的 B/C 占位；全部记录落地后整体验收：
+
+```bash
+grep -R "{{" <PROJECT> --include="*.md" || echo "✅ 全部占位符已清空"
 ```
 
 ## 步骤 5 · 裁剪可选章节

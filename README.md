@@ -33,11 +33,13 @@
 | `CLAUDE.md.template` | `<项目根>/CLAUDE.md` | 项目定位、技术边界、权威文档入口、开发与审阅规则、流程选择、新会话引导、变更门禁 |
 | `agents.md.template` | `<项目根>/agents.md` | 项目硬约束、4 问变更分级、过程合规必填字段、时间预估表 |
 | `development.md.template` | `<项目根>/docs/active/development.md` | 启动顺序、R0-R3 分层读取、Context Declaration、Semantic Diff Review、命令中断恢复 |
+| `项目概览.template.md` | `<项目根>/docs/00-项目概览.md` | 项目定位、技术底座、架构不变量、阶段划分、文档索引 |
+| `任务池.template.md` | `<项目根>/docs/09-任务池.md` | 任务卡格式、变更级别必填字段、状态转换、任务清单 |
 
 ### 记录层（`03-records/`）
 | 模板 | 落地为 | 核心内容 |
 |---|---|---|
-| `00-编号规范.md` | 人工查阅 | 文档 / 任务 / 变更 / 风险 / 需求编号规则，状态集，完成度口径 |
+| `00-编号规范.md` | `<项目根>/docs/编号规范.md` | 文档 / 任务 / 变更 / 风险 / 需求编号规则，状态集，完成度口径 |
 | `01-进度追踪.template.md` | `docs/90-进度追踪.md` 或 `docs/progress/progress-NNN.md` | 总看板、里程碑、任务明细、完成度、滞后预警、本周快照、周节拍 |
 | `02-开发日志.template.md` | `docs/93-开发日志.md` 或 `docs/dev-log/YYYY-MM-DD-*.md` | 按日倒序条目、状态变更、证据、遗留、关联变更 |
 | `03-变更记录.template.md` | `docs/92-变更记录.md` 或 `CHANGELOG.md` | CHG-NNN 变更流水 |
@@ -48,16 +50,35 @@
 ### 引导层（`04-bootstrap/`）
 | 文件 | 作用 |
 |---|---|
+| `init_project.py` | 一键初始化：复制模板、去后缀、替换 A 类变量、校验残留 |
 | `NEW-PROJECT.md` | 新项目初始化 SOP：复制映射、变量填充、启动顺序、验收清单 |
 | `VARIABLES.md` | 全部 `{{变量}}` 的定义与示例值 |
 
 ---
 
-## 三、怎么用（30 秒版）
+## 三、怎么用
 
-1. 新项目开工 → 打开 `04-bootstrap/NEW-PROJECT.md`
-2. 按映射表把模板复制到新项目对应路径
-3. 用 `VARIABLES.md` 把 `{{VAR}}` 全部替换掉（**检查残留**：`grep -R "{{" <项目根>` 应无输出）
+### 方式一：脚本一键初始化（推荐）
+
+```bash
+python 04-bootstrap/init_project.py --target D:/my-project --yes
+```
+
+交互式逐项填写（不给 `--yes` 即逐项提问）：
+
+```bash
+python 04-bootstrap/init_project.py --target D:/my-project
+```
+
+脚本会完成：复制 10 个模板到目标目录 → 去掉 `.template` → 替换 15 个 A 类项目配置变量 → 保留 B/C 类占位作为填写提示 → 输出清单并校验 A 类无残留。
+
+> 全局层不自动安装，脚本不触碰用户主目录，需手工并入 `~/.claude`。
+
+### 方式二：手工复制
+
+1. 按 `04-bootstrap/NEW-PROJECT.md` 的映射表复制模板到目标路径
+2. 去掉文件名中的 `.template`
+3. 按 `VARIABLES.md` 替换 A 类变量（B/C 类保留）
 4. 按 `00-编号规范.md` 建立文档编号骨架
 5. 写第一条进度、第一条日志、第一条防复发规则
 
